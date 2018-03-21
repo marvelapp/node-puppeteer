@@ -39,3 +39,16 @@ RUN apt-get update && apt-get install -y gconf-service \
     xdg-utils\
     wget \
     && apt-cache search -n '^fonts-*' | cut -d' ' -f1 | grep -v 'unhinted' | xargs -d '\n' -- apt-get install -y && apt-get clean
+
+RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb \
+    && dpkg -i dumb-init_*.deb \
+    && rm -f dumb-init_*
+
+# Add pptr user.
+RUN groupadd -r pptruser \
+    && useradd -r -g pptruser -G audio,video pptruser \
+    && mkdir -p /home/pptruser/Downloads \
+    && chown -R pptruser:pptruser /home/pptruser \
+    && chown -R pptruser:pptruser /app
+
+WORKDIR /app
