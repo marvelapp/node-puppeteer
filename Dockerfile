@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y gconf-service \
     wget\
     fontconfig \
     fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont\
-    fc-cache -f -v
+    && fc-cache -f -v
 
 RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb \
     && dpkg -i dumb-init_*.deb \
