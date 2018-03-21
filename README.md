@@ -1,0 +1,1 @@
+This is a simple image based off `node:8` that has all the system dependencies required to run headless Chrome via puppeteer
