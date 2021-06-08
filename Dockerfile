@@ -1,4 +1,4 @@
-FROM node:8
+FROM node:16
 
 WORKDIR /app
 
@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y gconf-service \
     libgdk-pixbuf2.0-0\
     libglib2.0-0\
     libgtk-3-0\
+    libgbm-dev\
     libnspr4\
     libpango-1.0-0\
     libpangocairo-1.0-0\
@@ -41,7 +42,7 @@ RUN apt-get update && apt-get install -y gconf-service \
     xdg-utils\
     wget\
     fontconfig \
-    fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont\
+    fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf\
     && fc-cache -f -v
 
 RUN wget https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64.deb \
